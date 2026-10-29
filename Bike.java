@@ -7,5 +7,7 @@ public class Bike extends Vehicle {
 	
 	private int rating;
 	
+	final private int rate_per_km = 15;
+	
 	
 }
