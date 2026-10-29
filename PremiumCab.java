@@ -10,6 +10,11 @@ public class PremiumCab extends Vehicle {
       private int rating = 4;
       final private int rate_per_km = 30;
       
+      int ac = 0;
+      
+      
+      
+      
     //constructor for premium cab
       PremiumCab(String driver_name  , String vehicle_model  ) {
   		super( driver_name ,  "QRPC" + (++countid) ,  vehicle_model);
@@ -20,8 +25,11 @@ public class PremiumCab extends Vehicle {
     		if(rating>=1 && rating<=5) {
     			this.rating = rating;
     		}
-    		else System.out.println("Pass a valid rating between 1 to 5");
-    		
+    		else System.out.println("Pass a valid rating between 1 to 5");    		
     	} 
+      
+      void acon() {
+    	  ac = 1;
+      }
       
 }

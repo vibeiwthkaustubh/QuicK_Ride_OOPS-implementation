@@ -9,9 +9,15 @@ public class Cab extends Vehicle {
    private int rating;
    final private int rate_per_km = 30;
    
+   int ac = 0;
+   
    
    // Constructor for Cab
    Cab(String driver_name , String vehicle_model  ) {
 		super( driver_name ,  "QRC" + (++countid) ,  vehicle_model);
 	} 
+   
+   void acon() {
+	   ac = 1;
+   }
 }
