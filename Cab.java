@@ -6,7 +6,7 @@ public class Cab extends Vehicle {
 	private static int countid = 1000;
    private final int	tax_percentage = 16;
    private  int seater;
-   private int rating;
+   private int rating;   // The Rating will be given as per first ride and then the average will be calculated.
    final private int rate_per_km = 30;
    
    int ac = 0;
