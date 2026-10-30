@@ -66,7 +66,7 @@ abstract public class Vehicle {
 	
 	void payment(Payment ref , int amount_paid) {
 		if(ref.paying((int)this.calculateFare() , amount_paid)) {
-			IO.print("payment successfull");
+			IO.println("payment successfull");
 			this.completeRide();
 		}
 		else System.out.println("Try again payment failed");

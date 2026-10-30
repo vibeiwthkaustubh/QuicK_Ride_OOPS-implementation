@@ -41,6 +41,7 @@ public class PremiumCab extends Vehicle {
   	@Override
   	void book() {
   		if(this.getstate()==true) {
+  			 setCurrent_ride_km();
                 System.out.println("Premium Ride booked successfully");
                 this.setstate(false);
   		}

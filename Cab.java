@@ -32,11 +32,18 @@ public class Cab extends Vehicle {
 	@Override
 	void book() {
 		if(this.getstate()==true) {
-			System.out.println("Cab ride booked successfully");
+			 setCurrent_ride_km();
+			System.out.println("Cab ride booked successfully and the fare is " + (int)calculateFare());
 			this.setstate(false);
 		}
 		else System.out.println("Ride is busy");
 	}
+	
+	// Fare calculation
+		@Override
+		float calculateFare() {
+			return (rate_per_km * this.getCurrent_ride_km());
+		}
 
 	//check availability
 	@Override
