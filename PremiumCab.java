@@ -28,8 +28,38 @@ public class PremiumCab extends Vehicle {
     		else System.out.println("Pass a valid rating between 1 to 5");    		
     	} 
       
+      
+      // Ac ON/OFF feature 
       void acon() {
     	  ac = 1;
       }
+      
+      
+//  	Behavior implementation
+  	
+  	// Booking method
+  	@Override
+  	void book() {
+  		if(this.getstate()==true) {
+                System.out.println("Premium Ride booked successfully");
+                this.setstate(false);
+  		}
+  		else System.out.println("Ride is busy");
+  	}
+  	
+  	//check availability
+  	@Override
+  	void isAvaliable() {
+  		if(this.getstate())System.out.println("Premium Cab is avaliable");
+		else System.out.println("Premium Cab is not avaliable");
+  	}
+  	
+  	
+  	// Ride complete the method
+  	@Override
+  	void completeRide() {
+  		this.setstate(true);
+  		System.out.println("Hope you enjoyed the ride please do rate the driver");
+  	}
       
 }
