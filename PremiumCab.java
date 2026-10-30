@@ -5,7 +5,7 @@ public class PremiumCab extends Vehicle {
 	// specialized variables for PremiumCab
 	private static int countid = 1000;
       private final int tax_percentage = 18;
-      private int comfort_level ;
+      private int premium_charges = 30 ;
       private int seater;  
       private int rating = 4;
       final private int rate_per_km = 30;
@@ -33,6 +33,13 @@ public class PremiumCab extends Vehicle {
       void acon() {
     	  ac = 1;
       }
+      
+      
+   // Fare calculation
+  	@Override
+  	float calculateFare() {
+  		return ((rate_per_km * this.getCurrent_ride_km() + (this.getCurrent_ride_km() *premium_charges)));
+  	}
       
       
 //  	Behavior implementation

@@ -19,7 +19,7 @@ public class QuickRideApp {
 //	Vehicle c3 = new Cab("Som2" , "piaggo2");
 //	Vehicle c4 = new Cab("Som3" , "piaggo3");
 //	Vehicle c5 = new Cab("Som4" , "piaggo4");
-//	Vehicle pc1 = new PremiumCab("Utkarsh" , "Rangrover");
+	Vehicle pc1 = new PremiumCab("Utkarsh" , "Rangrover");
 //	Vehicle pc2 = new PremiumCab("Utkarsh1" , "Rangrover1");
 //	Vehicle pc3 = new PremiumCab("Utkarsh2" , "Rangrover2");
 //	Vehicle pc4 = new PremiumCab("Utkarsh3" , "Rangrover3");
@@ -29,9 +29,9 @@ public class QuickRideApp {
 //	Payment p1 = new Upi();
 //	b1.payment(p1, 180);
 	
-	c1.book();
+	pc1.book();
 	Payment p2 = new Upi();
-	c1.payment(p2, 660);
+	pc1.payment(p2, 60);
 	
 	
 	
