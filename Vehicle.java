@@ -38,13 +38,13 @@ abstract public class Vehicle {
 
 
 	// getter for state
-	public boolean getstate()
+	public boolean getState()
 	{
 		return state;
 	}
 
 	// setter	for state 
-	public void setstate(boolean state) {
+	public void setState(boolean state) {
 		this.state = state;
 	}
 
@@ -55,7 +55,17 @@ abstract public class Vehicle {
 	// Behaviors of child booking related
 	abstract void book();
 	abstract void isAvaliable();
-	abstract void completeRide();
+	private void completeRide() {
+		if(!this.getState()) {
+			this.setState(true);
+		}
+		 
+		else {
+			System.out.println("Ride is already free");
+		}
+	
+		
+	}
 	
 	
 	
@@ -65,11 +75,14 @@ abstract public class Vehicle {
 	abstract float calculateFare();
 	
 	void payment(Payment ref , int amount_paid) {
+		if(!this.state) {
 		if(ref.paying((int)this.calculateFare() , amount_paid)) {
 			IO.println("payment successfull");
 			this.completeRide();
 		}
 		else System.out.println("Try again payment failed");
+		}
+		else System.out.println("No payment pending");
 	}
 
 

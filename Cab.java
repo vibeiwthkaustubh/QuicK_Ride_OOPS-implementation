@@ -31,10 +31,10 @@ public class Cab extends Vehicle {
 	// Booking method
 	@Override
 	void book() {
-		if(this.getstate()==true) {
+		if(this.getState()==true) {
 			 setCurrent_ride_km();
 			System.out.println("Cab ride booked successfully and the fare is " + (int)calculateFare());
-			this.setstate(false);
+			this.setState(false);
 		}
 		else System.out.println("Ride is busy");
 	}
@@ -48,17 +48,13 @@ public class Cab extends Vehicle {
 	//check availability
 	@Override
 	void isAvaliable() {
-		if(this.getstate())System.out.println("Cab is avaliable");
+		if(this.getState())System.out.println("Cab is avaliable");
 		else System.out.println("Cab is not avaliable");
 	}
 
 
 	// Ride complete the method
-	@Override
-	void completeRide() {
-		this.setstate(true);
-		System.out.println("Hope you enjoyed the ride please do rate the driver");
-	}
+	
 
 
 

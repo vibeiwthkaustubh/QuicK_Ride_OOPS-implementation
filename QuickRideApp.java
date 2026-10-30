@@ -31,7 +31,7 @@ public class QuickRideApp {
 	
 	pc1.book();
 	Payment p2 = new Upi();
-	pc1.payment(p2, 60);
+	pc1.payment(p2, 6000);
 	
 	
 	

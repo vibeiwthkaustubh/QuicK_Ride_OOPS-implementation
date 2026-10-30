@@ -30,7 +30,7 @@ public class Bike extends Vehicle {
 	//check availability
 		@Override
 		void isAvaliable() {
-			if(this.getstate())System.out.println("Bike is avaliable");
+			if(this.getState())System.out.println("Bike is avaliable");
 			else System.out.println("Bike is not avaliable");
 		}
 
@@ -40,14 +40,14 @@ public class Bike extends Vehicle {
 	// Booking method
 	@Override
 	void book() {
-		if(this.getstate()==true) {
+		if(this.getState()==true) {
 			
 			 setCurrent_ride_km();
 			 
 			 
 			
 			System.out.println("Bike ride booked successfully and the fare for the ride is " + (int)calculateFare());
-			this.setstate(false);
+			this.setState(false);
 		}
 		else System.out.println("Ride is busy");
 	}
@@ -61,14 +61,8 @@ public class Bike extends Vehicle {
 	
 
 	// Ride complete the methodgit s
-	@Override
-	void completeRide() {
-		
-		 
-		this.setstate(true);
-	IO.println("");// changed the version to jvm and jre 26
-		
-	}
+	
+	
 
 
 

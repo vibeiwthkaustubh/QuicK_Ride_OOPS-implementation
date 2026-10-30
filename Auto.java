@@ -20,10 +20,10 @@ public class Auto extends Vehicle {
 	// Booking method
 	@Override
 	void book() {
-		if(this.getstate()==true) {
+		if(this.getState()==true) {
 			 setCurrent_ride_km();
 			System.out.println("Auto ride booked successfully and the fare is " + (int)calculateFare());
-			this.setstate(false);
+			this.setState(false);
 		}
 		else System.out.println("Ride is busy");
 	}
@@ -41,17 +41,12 @@ public class Auto extends Vehicle {
 	//check availability
 	@Override
 	void isAvaliable() {
-		if(this.getstate())System.out.println("Auto is avaliable");
+		if(this.getState())System.out.println("Auto is avaliable");
 		else System.out.println("Auto is not avaliable");
 	}
 
 
-	// Ride complete the method
-	@Override
-	void completeRide() {
-		this.setstate(true);
-		System.out.println("Hope you enjoyed the ride please do rate the driver");
-	}
+	
 
 
 }
