@@ -1,6 +1,5 @@
 package com.QuickRide.www;
-
-abstract public class Payment {
-      abstract void paymentt(int amount);
+public interface Payment {
+      abstract boolean paying(int ride_fare, int paid_amt);
 }
  

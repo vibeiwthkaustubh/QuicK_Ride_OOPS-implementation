@@ -1,12 +1,16 @@
 package com.QuickRide.www;
 
 public class Bike extends Vehicle {
+	
+	
+	
 
 	// specialized variables 
 	private static int countid = 1000;
 	final private int tax_percentage = 12;	
 	private int rating;     // The Rating will be given as per first ride and then the average will be calculated.
 	final private int rate_per_km = 15;
+	
 
 
 
@@ -20,31 +24,50 @@ public class Bike extends Vehicle {
 
 
 	//	Behavior implementation
+	
+	
+	
+	//check availability
+		@Override
+		void isAvaliable() {
+			if(this.getstate())System.out.println("Bike is avaliable");
+			else System.out.println("Bike is not avaliable");
+		}
 
+
+		
+		
 	// Booking method
 	@Override
 	void book() {
 		if(this.getstate()==true) {
-			System.out.println("Bike ride booked successfully");
+			
+			 setCurrent_ride_km();
+			 
+			 
+			
+			System.out.println("Bike ride booked successfully and the fare for the ride is " + (int)calculateFare());
 			this.setstate(false);
 		}
 		else System.out.println("Ride is busy");
 	}
-
-	//check availability
+	
+	// Fare calculation
 	@Override
-	void isAvaliable() {
-		if(this.getstate())System.out.println("Bike is avaliable");
-		else System.out.println("Bike is not avaliable");
+	float calculateFare() {
+		return (rate_per_km * this.getCurrent_ride_km());
 	}
 
+	
 
-	// Ride complete the method
+	// Ride complete the methodgit s
 	@Override
 	void completeRide() {
+		
+		 
 		this.setstate(true);
 	IO.println("");// changed the version to jvm and jre 26
-		System.out.println("Hope you enjoyed the ride please do rate the driver");
+		
 	}
 
 
