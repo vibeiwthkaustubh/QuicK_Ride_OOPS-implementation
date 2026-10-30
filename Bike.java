@@ -43,6 +43,7 @@ public class Bike extends Vehicle {
 	@Override
 	void completeRide() {
 		this.setstate(true);
+	IO.println("");// changed the version to jvm and jre 26
 		System.out.println("Hope you enjoyed the ride please do rate the driver");
 	}
 
