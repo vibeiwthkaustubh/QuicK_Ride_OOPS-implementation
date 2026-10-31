@@ -29,6 +29,48 @@ v1.0, first stable release.
 
 All fares include 12% tax.
 
+## Ride Flow
+
+```mermaid
+flowchart TD
+    A[Book ride with distance] --> B{Distance 1 to 5000?}
+    B -- No --> B1[Show invalid distance message]
+    B -- Yes --> C{Vehicle free?}
+    C -- No --> C1[Show Ride is busy]
+    C -- Yes --> D[Calculate fare and mark vehicle busy]
+    D --> E[User pays amount]
+    E --> F{Payment method null?}
+    F -- Yes --> F1[Select a valid payment method]
+    F -- No --> G{Amount equals fare?}
+    G -- No --> G1[Payment failed, try again]
+    G -- Yes --> H[Payment successful, vehicle free]
+    H --> I[Ask rating 1 to 5 or Enter to skip]
+```
+
+## Design
+
+```mermaid
+classDiagram
+    class Vehicle {
+        <<abstract>>
+        book(int km)
+        calculateFare() int
+        payment(Payment ref, int amount)
+        checkAvailability()
+    }
+    class Payment {
+        <<interface>>
+        paying(int fare, int paid) boolean
+    }
+    Vehicle <|-- Bike
+    Vehicle <|-- Auto
+    Vehicle <|-- Cab
+    Vehicle <|-- PremiumCab
+    Payment <|.. Upi
+    Payment <|.. CreditCard
+    Vehicle ..> Payment : uses
+```
+
 ## OOP Concepts Used
 - **Abstraction:** Vehicle is an abstract class and Payment is an interface.
 - **Inheritance:** Bike, Auto, Cab and PremiumCab extend Vehicle.
