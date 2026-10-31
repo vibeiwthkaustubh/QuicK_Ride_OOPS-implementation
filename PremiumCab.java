@@ -5,12 +5,11 @@ public class PremiumCab extends Vehicle {
 	// specialized variables for PremiumCab
 	private static int countid = 1000;
      
-      private int premium_charges = 30 ;
-      private int seater;  
-      private int rating = 4;
+      private int premium_charges = 30 ;      
      
-      
-      int ac = 0;
+     
+           
+//       boolean  ac = false;
       
       
       
@@ -20,52 +19,19 @@ public class PremiumCab extends Vehicle {
   		super( driver_name ,  "QRPC" + (++countid) ,  vehicle_model  ,30);
   		
   	} 
-      PremiumCab(String driver_name  , String vehicle_model , int rating ) {
-    		super( driver_name ,  "QRPC" + (++countid) ,  vehicle_model  ,30);
-    		if(rating>=1 && rating<=5) {
-    			this.rating = rating;
-    		}
-    		else System.out.println("Pass a valid rating between 1 to 5");    		
-    	} 
       
-      
-      // Ac ON/OFF feature 
-      void acon() {
-    	  ac = 1;
+      @Override
+      int calculateFare() {
+      	return super.calculateFare() + (int)(getCurrent_ride_km() * premium_charges);
       }
       
-      
-   // Fare calculation
-  	@Override
-  	int calculateFare() {
-  		int i = super.calculateFare();
-  		return(i+(int)(this.getCurrent_ride_km()*premium_charges));
-  	}
+
+  
+    	
       
       
-//  	Behavior implementation
-  	
-  	// Booking method
-  	@Override
-  	void book(int a) {
-  		if(this.getState()==true) {
-  			 setCurrent_ride_km();
-                System.out.println("Premium Ride"
-                		+ " booked successfully and the fare is " + calculateFare());
-                this.setState(false);
-  		}
-  		else System.out.println("Ride is busy");
-  	}
-  	
-  	//check availability
-  	@Override
-  	void isAvaliable() {
-  		if(this.getState())System.out.println("Premium Cab is avaliable");
-		else System.out.println("Premium Cab is not avaliable");
-  	}
-  	
-  	
-  	// Ride complete the method
+      
+      
   	
       
 }

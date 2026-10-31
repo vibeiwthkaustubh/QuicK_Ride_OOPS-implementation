@@ -29,10 +29,10 @@ public class QuickRideApp {
 //	Payment p1 = new Upi();
 //	b1.payment(p1, 180);
 	
-	b1.book(12);
+	b1.book(5001);
 	b1.checkAvailability();
 	Payment p1 = new Upi();
-	b1.payment(p1, 202);
+	b1.payment(p1, 84001);
 	b1.checkAvailability();
 	
 	

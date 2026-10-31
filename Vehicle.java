@@ -1,8 +1,8 @@
 package com.QuickRide.www;
 import java.util.Scanner;
 abstract public class Vehicle {
-
-	Scanner sc = new Scanner(System.in);
+	private static final int MAX_KM = 5000;
+	static Scanner sc = new Scanner(System.in);
 
 	// fields
 	private String driver_name;
@@ -23,21 +23,26 @@ abstract public class Vehicle {
 	
 
 
-    private void setRating() {
-	  System.out.println("Enter the rating between 1 to 5 or press Enter to skip");
-	  String s = sc.nextLine().trim();
-	 if(!s.isEmpty()) {
-		 int a = Integer.parseInt(s); 
-			if(a>0&&a<=5) {
+	private void setRating() {
+		System.out.println("Enter the rating between 1 to 5 or press Enter to skip");
+		String s = sc.nextLine().trim();
+		if (!s.isEmpty()) {
+			int a;
+			try {
+				a = Integer.parseInt(s);
+			} catch (NumberFormatException e) {
+				System.out.println("Not a valid rating");
+				return;
+			}
+			if (a > 0 && a <= 5) {
 				this.ratingcount++;
 				this.totalrating = totalrating + a;
-				this.rating = this.totalrating/this.ratingcount;
+				this.rating = this.totalrating / this.ratingcount;
+				System.out.println("Thank you for the rating");
 			}
 			else System.out.println("Not a valid rating");
-	 }
-	 
-	  
-  }
+		}
+	}
 
 
 
@@ -87,18 +92,19 @@ abstract public class Vehicle {
 
 // Booking method for bike, cab , and auto
 	void book(int a) {
+		if(a<=MAX_KM) {
 		if(a>0) {
 		if(this.getState()==true) {
-			this.current_ride_km = a;
-			this.ratingcount++;
+			this.current_ride_km = a;	
 			System.out.println("Ride is booked successfully and the fare for the ride is " + calculateFare());
 			this.setState(false);
 		}
 		else System.out.println("Ride is busy");
 	}
 		else System.out.println("Please enter a valid distance");
+		}
+		else System.out.println("No booking can be made for distance greater than 5000");
 	}
-	
 
 
 	
@@ -143,12 +149,15 @@ abstract public class Vehicle {
 //payment logic for bike , car , and auto 
 	void payment(Payment ref , int amount_paid) {
 		if(!this.state) {
+			if(ref!=null) {
 			if(ref.paying((int)this.calculateFare() , amount_paid)) {
 				IO.println("payment successfull");
 				this.completeRide();
 				this.setRating();
 			}
 			else System.out.println("Try again payment failed");
+			}
+			else System.out.println("Please select a valid payment method");
 		}
 		else System.out.println("No payment pending");
 	}
