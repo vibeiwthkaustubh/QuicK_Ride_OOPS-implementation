@@ -29,9 +29,15 @@ public class QuickRideApp {
 //	Payment p1 = new Upi();
 //	b1.payment(p1, 180);
 	
-	pc1.book();
-	Payment p2 = new Upi();
-	pc1.payment(p2, 6000);
+	b1.book(12);
+	b1.checkAvailability();
+	Payment p1 = new Upi();
+	b1.payment(p1, 202);
+	b1.checkAvailability();
+	
+	
+
+	
 	
 	
 	

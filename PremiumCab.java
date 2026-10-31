@@ -4,11 +4,11 @@ public class PremiumCab extends Vehicle {
 	
 	// specialized variables for PremiumCab
 	private static int countid = 1000;
-      private final int tax_percentage = 18;
+     
       private int premium_charges = 30 ;
       private int seater;  
       private int rating = 4;
-      final private int rate_per_km = 30;
+     
       
       int ac = 0;
       
@@ -17,11 +17,11 @@ public class PremiumCab extends Vehicle {
       
     //constructor for premium cab
       PremiumCab(String driver_name  , String vehicle_model  ) {
-  		super( driver_name ,  "QRPC" + (++countid) ,  vehicle_model);
+  		super( driver_name ,  "QRPC" + (++countid) ,  vehicle_model  ,30);
   		
   	} 
       PremiumCab(String driver_name  , String vehicle_model , int rating ) {
-    		super( driver_name ,  "QRPC" + (++countid) ,  vehicle_model);
+    		super( driver_name ,  "QRPC" + (++countid) ,  vehicle_model  ,30);
     		if(rating>=1 && rating<=5) {
     			this.rating = rating;
     		}
@@ -37,8 +37,9 @@ public class PremiumCab extends Vehicle {
       
    // Fare calculation
   	@Override
-  	float calculateFare() {
-  		return ((rate_per_km * this.getCurrent_ride_km() + (this.getCurrent_ride_km() *premium_charges)));
+  	int calculateFare() {
+  		int i = super.calculateFare();
+  		return(i+(int)(this.getCurrent_ride_km()*premium_charges));
   	}
       
       
@@ -46,10 +47,11 @@ public class PremiumCab extends Vehicle {
   	
   	// Booking method
   	@Override
-  	void book() {
+  	void book(int a) {
   		if(this.getState()==true) {
   			 setCurrent_ride_km();
-                System.out.println("Premium Ride booked successfully and the fare is " + (int)calculateFare());
+                System.out.println("Premium Ride"
+                		+ " booked successfully and the fare is " + calculateFare());
                 this.setState(false);
   		}
   		else System.out.println("Ride is busy");
