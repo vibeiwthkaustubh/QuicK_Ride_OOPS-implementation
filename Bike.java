@@ -7,7 +7,7 @@ public class Bike extends Vehicle {
 
 	// specialized variables 
 	private static int countid = 1000;		
-	private int rating;     // The Rating will be given as per first ride and then the average will be calculated.
+	
 	
 	
 

@@ -16,9 +16,28 @@ abstract public class Vehicle {
 	
 	private float current_ride_km ;
 	
+	// Rating field
+	private int rating; // The Rating will be given as per first ride and then the average will be calculated.
+	private int ratingcount;
+	private int totalrating;	
+	
 
 
-
+    private void setRating() {
+	  System.out.println("Enter the rating between 1 to 5 or press Enter to skip");
+	  String s = sc.nextLine().trim();
+	 if(!s.isEmpty()) {
+		 int a = Integer.parseInt(s); 
+			if(a>0&&a<=5) {
+				this.ratingcount++;
+				this.totalrating = totalrating + a;
+				this.rating = this.totalrating/this.ratingcount;
+			}
+			else System.out.println("Not a valid rating");
+	 }
+	 
+	  
+  }
 
 
 
@@ -71,6 +90,7 @@ abstract public class Vehicle {
 		if(a>0) {
 		if(this.getState()==true) {
 			this.current_ride_km = a;
+			this.ratingcount++;
 			System.out.println("Ride is booked successfully and the fare for the ride is " + calculateFare());
 			this.setState(false);
 		}
@@ -126,6 +146,7 @@ abstract public class Vehicle {
 			if(ref.paying((int)this.calculateFare() , amount_paid)) {
 				IO.println("payment successfull");
 				this.completeRide();
+				this.setRating();
 			}
 			else System.out.println("Try again payment failed");
 		}
